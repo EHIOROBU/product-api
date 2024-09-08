@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const Product = require("./model/products");
 const productRoute = require("./routes/product.route");
 
+
 const app = express();
 
 //middleware
@@ -17,7 +18,8 @@ app.get('/', (req, res) => {
   res.send("FUCK OFF MY API IS SUPERB");
 });
 
-mongoose.connect("mongodb+srv://ehigideon517:laWuuNGcSxD0Jb0n@apicheck.jl17m.mongodb.net/?retryWrites=true&w=majority&appName=apiCheck")
+require('dotenv').config()
+mongoose.connect(process.env.MONGO_DB_URL)
   .then(() => {
     console.log('connecting to  database');
     app.listen(3000, () => {
